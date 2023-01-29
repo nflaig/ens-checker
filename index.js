@@ -2,7 +2,7 @@ const fs = require("fs");
 const namehash = require("eth-ens-namehash");
 const fetch = require("node-fetch");
 
-const raw = fs.readFileSync("./forenames.json", "utf-8");
+const raw = fs.readFileSync("./countries.json", "utf-8");
 
 const parsed = JSON.parse(raw);
 
