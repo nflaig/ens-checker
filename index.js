@@ -1,16 +1,10 @@
 const fs = require("fs");
-// const crypto = require("crypto");
 const namehash = require("eth-ens-namehash");
-// var sha3 = require('js-sha3').keccak_256;
 const fetch = require("node-fetch");
 
-// const raw = fs.readFileSync("./domains.txt", "utf-8");
-// const raw = fs.readFileSync("./countries.txt", "utf-8");
 const raw = fs.readFileSync("./forenames.json", "utf-8");
 
-// const parsed = raw.split("\n").map((url) => url);
 const parsed = JSON.parse(raw);
-// const domains = JSON.parse(fs.readFileSync("./top100domains.json", "utf-8")).map(o => o.domain);
 
 async function findUnregisteredEthDomains(domains) {
   const unregistered = [];
@@ -46,26 +40,3 @@ async function findUnregisteredEthDomains(domains) {
 findUnregisteredEthDomains(parsed)
   .then((unregistered) => unregistered.filter((domain) => domain.split(".")[0].length > 2))
   .then((filtered) => console.log("Unregistered domains: " + JSON.stringify(filtered)));
-
-// console.log(urls)
-
-// function createHash(value) {
-//     return crypto.createHash("sha256").update(value).digest("hex");
-// }
-
-// function namehash(domain) {
-//     return "0x" + createHash(createHash(domain) + "0x4f5b812789fc606be1b3b16908db13fc7a9adf7ca72641f84d75b47069d3d7f0");
-// }
-
-// function namehash(name) {
-//     if (!name) {
-//         return "00".repeat(32);
-//     } else {
-//         const [label, remainder] = name.split('.');
-//         return "0x" + sha3(namehash(remainder) + sha3(label));
-//     }
-// }
-
-// console.log(namehashLib.hash("example.eth"))
-// console.log(namehash("eth"))
-// console.log(namehash.hash("foo.eth"))
